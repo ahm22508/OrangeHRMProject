@@ -10,6 +10,8 @@ public class HomePage {
     }
     private final By LogoutButton = By.xpath("//a[text()='Logout']");
     private final By AdminButton = By.xpath("(//span[text()='Admin'])[1]");
+    private final By DropDownMenu =By.xpath("//i[@class ='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']");
+
 
 
     public static By GetValidLogin(){
@@ -22,7 +24,7 @@ public class HomePage {
     }
 
    public void LogoutThePage(){
-        driver.findElement(HomePage.GetValidLogin()).click();
+        driver.findElement(DropDownMenu).click();
         driver.findElement(LogoutButton).click();
    }
    public void ClickOnAdminButton(){
