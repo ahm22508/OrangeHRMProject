@@ -16,6 +16,11 @@ public class HomePage {
         return By.xpath("//h6[text()='Dashboard']");
     }
 
+
+    public static By GetRecruitmentButton(){
+        return By.xpath("//span[text()='Recruitment']");
+    }
+
    public void LogoutThePage(){
         driver.findElement(HomePage.GetValidLogin()).click();
         driver.findElement(LogoutButton).click();
@@ -23,4 +28,8 @@ public class HomePage {
    public void ClickOnAdminButton(){
         driver.findElement(AdminButton).click();
    }
+
+    public void NavigateToRecrutimentPage(){
+        driver.findElement(HomePage.GetRecruitmentButton()).click();
+    }
 }

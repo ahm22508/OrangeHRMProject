@@ -1,9 +1,6 @@
 package OrangeHrmTests;
 
-import OrangeHRMPages.AdminPage;
-import OrangeHRMPages.HomePage;
-import OrangeHRMPages.LoginPage;
-import OrangeHRMPages.UserManagementPage;
+import OrangeHRMPages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -41,6 +38,17 @@ public  class Base {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ElementToWait));
         return new AdminPage(driver);
     }
+    public static RecruitmentPage WaitMethodOfRecruitmente(By ElementToWait) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ElementToWait));
+        return new RecruitmentPage(driver);
+    }
+        public static EditRecruitmentPage WaitMethodOfRecruitmenteEditPage(By ElementToWait){
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(ElementToWait));
+            return new EditRecruitmentPage(driver);
+        }
+
     @BeforeMethod
     public void StartTest(){
         driver = new ChromeDriver();
