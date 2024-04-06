@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 
 public class HomeTests extends Base {
 
-
     @Test
     public void LogoutTestCase(){
      Base.WaitMethodOfLogin(LoginPage.ReturnUserName()).Login(LoginTests.UserName, LoginTests.Password);

@@ -1,6 +1,5 @@
 package OrangeHRMPages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -24,7 +23,6 @@ public class UserManagementPage {
     public static By AssertSelectAdmin (String AssertElement){
         return By.xpath("(//div[text()=\""+AssertElement+"\"])[1]");
     }
-
 
     public void ClickOnAddButton(){
         driver.findElement(UserManagementPage.AddButton()).click();

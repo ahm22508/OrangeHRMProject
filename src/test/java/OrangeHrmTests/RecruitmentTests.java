@@ -8,7 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RecruitmentTests extends Base{
-
     String FirstName = "Juan";
     String MiddleName = "Raul";
     String LastName = "Antonio";

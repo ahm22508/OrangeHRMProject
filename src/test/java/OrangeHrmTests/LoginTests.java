@@ -11,7 +11,6 @@ public class LoginTests extends Base{
     static String InvalidUserName = "adm";
     static String InvalidPassword = "adm11";
 
-
     @Test
     public void ValidLogin(){
         Base.WaitMethodOfLogin((LoginPage.ReturnUserName())).Login(UserName, Password);

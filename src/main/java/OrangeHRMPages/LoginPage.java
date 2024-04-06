@@ -8,7 +8,6 @@ public class LoginPage {
         this.driver = driver;
     }
 
-
     private  final By PasswordField = By.xpath("//input[@name='password']");
     private  final By LoginButton = By.xpath("//button[@type='submit']");
 
@@ -18,7 +17,6 @@ public class LoginPage {
     public static By GetErrorLoginButton(){
       return By.xpath("//p[text()='Invalid credentials']");
     }
-
     public void Login(String UserName, String Password){
         driver.findElement(LoginPage.ReturnUserName()).sendKeys(UserName);
         driver.findElement(PasswordField).sendKeys(Password);

@@ -54,8 +54,8 @@ public  class Base {
         driver = new ChromeDriver();
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
-//@AfterMethod
-//    public void EndTest(){
-//        driver.quit();
-//    }
+@AfterMethod
+    public void EndTest(){
+        driver.quit();
+    }
 }
