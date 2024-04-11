@@ -4,6 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class EditRecruitmentPage {
     private final WebDriver driver;
@@ -27,6 +31,8 @@ public class EditRecruitmentPage {
 
     public void EditRecruitment(String FirstName, String MiddleName, String LastName){
         Actions action = new Actions(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(EditRecruitmentPage.GetEditButton()));
         driver.findElement(EditRecruitmentPage.GetEditButton()).click();
         action.click(driver.findElement(EditRecruitmentPage.GetFirstNameField())).keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).keyDown(Keys.BACK_SPACE).build().perform();
         driver.findElement(EditRecruitmentPage.GetFirstNameField()).sendKeys(FirstName);
@@ -35,6 +41,8 @@ public class EditRecruitmentPage {
         action.click(driver.findElement(LastNameField)).keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).keyDown(Keys.BACK_SPACE).build().perform();
         driver.findElement(LastNameField).sendKeys(LastName);
         driver.findElement(SaveButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(EditRecruitmentPage.GetNotificacionMassage()));
+
     }
 
 }

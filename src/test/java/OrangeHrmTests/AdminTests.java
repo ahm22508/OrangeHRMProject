@@ -1,7 +1,5 @@
 package OrangeHrmTests;
 
-import OrangeHRMPages.AdminPage;
-import OrangeHRMPages.HomePage;
 import OrangeHRMPages.LoginPage;
 import OrangeHRMPages.UserManagementPage;
 import org.testng.Assert;
@@ -19,37 +17,22 @@ public class AdminTests extends Base{
 
     @Test
     public void AddAdminToThePage(){
-        Base.WaitMethodOfLogin(LoginPage.ReturnUserName()).Login(LoginTests.UserName, LoginTests.Password);
-        Base.WaitMethodOfHome(HomePage.GetValidLogin()).
-                ClickOnAdminButton();
-        Base.WaitMethodOfUserManagement(UserManagementPage.AddButton()).
-                ClickOnAddButton();
-        Base.WaitMethodOfAdmin(AdminPage.GetUserRoleDropDownMenu()).
-                AddAdmin(EmployeeHint,UserName, Password, ConfirmPassword);
-        Base.WaitMethodOfUserManagement(UserManagementPage.AssertAddAdmin());
-        Base.AssertMethod(driver.findElement(UserManagementPage.AssertAddAdmin()).isDisplayed());
+        new LoginPage(driver).Login(LoginTests.UserName, LoginTests.Password).
+                ClickOnAdminButton().ClickOnAddButton().
+                AddAdmin(EmployeeHint, UserName, Password, ConfirmPassword);
+        Assert.assertTrue(driver.findElement(UserManagementPage.AssertAddAdmin()).isDisplayed());
     }
 @Test
     public void DeleteAdminFunction(){
-        Base.WaitMethodOfLogin(LoginPage.ReturnUserName()).
-                Login(LoginTests.UserName, LoginTests.Password);
-        Base.WaitMethodOfHome(HomePage.GetValidLogin()).
-                ClickOnAdminButton();
-        Base.WaitMethodOfUserManagement(UserManagementPage.AddButton()).
-                DeleteAdmin();
-        Base.WaitMethodOfUserManagement(UserManagementPage.DeleteMassage());
+        new LoginPage(driver).Login(LoginTests.UserName, LoginTests.Password).ClickOnAdminButton().DeleteAdmin();
         Assert.assertTrue(driver.findElement(UserManagementPage.DeleteMassage()).isDisplayed());
     }
     @Test
     public void SearchAdminName(){
-        Base.WaitMethodOfLogin(LoginPage.ReturnUserName()).
-                Login(LoginTests.UserName, LoginTests.Password);
-        Base.WaitMethodOfHome(HomePage.GetValidLogin()).
-                ClickOnAdminButton();
-        Base.WaitMethodOfUserManagement(UserManagementPage.AddButton()).SearchAdmin(UserNameField);
-        Base.WaitMethodOfUserManagement(UserManagementPage.AssertSelectAdmin(Element));
+        new LoginPage(driver).Login(LoginTests.UserName, LoginTests.Password).
+                ClickOnAdminButton().
+                SearchAdmin(UserNameField, Element);
         Assert.assertTrue(driver.findElement(UserManagementPage.AssertSelectAdmin(Element)).isDisplayed());
-
     }
 
 

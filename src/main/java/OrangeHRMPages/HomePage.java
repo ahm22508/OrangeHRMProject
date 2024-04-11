@@ -2,6 +2,10 @@ package OrangeHRMPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class HomePage {
    private final WebDriver driver;
@@ -24,14 +28,24 @@ public class HomePage {
     }
 
    public void LogoutThePage(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(DropDownMenu));
         driver.findElement(DropDownMenu).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LogoutButton));
         driver.findElement(LogoutButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.ReturnUserName()));
    }
-   public void ClickOnAdminButton(){
+   public UserManagementPage ClickOnAdminButton(){
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+       wait.until(ExpectedConditions.visibilityOfElementLocated(AdminButton));
         driver.findElement(AdminButton).click();
+        return new UserManagementPage(driver);
    }
 
-    public void NavigateToRecrutimentPage(){
+    public RecruitmentPage NavigateToRecruitmentPage(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(HomePage.GetRecruitmentButton()));
         driver.findElement(HomePage.GetRecruitmentButton()).click();
+        return new RecruitmentPage(driver);
     }
 }

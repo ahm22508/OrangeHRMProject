@@ -1,9 +1,7 @@
 package OrangeHrmTests;
 
 import OrangeHRMPages.EditRecruitmentPage;
-import OrangeHRMPages.HomePage;
 import OrangeHRMPages.LoginPage;
-import OrangeHRMPages.RecruitmentPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,15 +12,10 @@ public class RecruitmentTests extends Base{
 
     @Test
     public void EditRecruitmentFunction(){
-        Base.WaitMethodOfLogin(LoginPage.ReturnUserName()).
-                Login(LoginTests.UserName,LoginTests.Password);
-        Base.WaitMethodOfHome(HomePage.GetRecruitmentButton()).
-                NavigateToRecrutimentPage();
-        Base.WaitMethodOfRecruitmente(RecruitmentPage.GetEyeButton()).
-                NavigateToRecrutimentEditPage();
-        Base.WaitMethodOfRecruitmenteEditPage(EditRecruitmentPage.GetFirstNameField()).
-                EditRecruitment(FirstName,MiddleName,LastName);
-        Base.WaitMethodOfRecruitmenteEditPage(EditRecruitmentPage.GetNotificacionMassage());
+      new LoginPage(driver).
+              Login(LoginTests.UserName, LoginTests.Password).NavigateToRecruitmentPage().
+              NavigateToRecruitmentEditPage().
+              EditRecruitment(FirstName, MiddleName,LastName);
         Assert.assertTrue(driver.findElement(EditRecruitmentPage.GetNotificacionMassage()).isDisplayed());
     }
 }

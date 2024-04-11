@@ -8,7 +8,7 @@ import java.time.Duration;
 
 
 
-public class AdminPage {
+public class AdminPage{
     private  final WebDriver driver;
     public AdminPage(WebDriver driver){
         this.driver = driver;
@@ -23,22 +23,25 @@ public class AdminPage {
     private final By PasswordField = By.xpath("(//input[@type='password'])[1]");
     private final By SaveButton = By.xpath("//button[text()=' Save ']");
     private final By EmployeeElement = By.xpath("//span[text()='yedghjb1 ru84 90jsnd']");
-    public static By GetUserRoleDropDownMenu(){
-        return By.xpath("(//div[@class='oxd-select-text oxd-select-text--active'])[1]");
-    }
+
 
    public  void AddAdmin(String EmployeeHint, String USerName, String Password, String ConfirmPassword){
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+       wait.until(ExpectedConditions.visibilityOfElementLocated(AdminDropDownMenu));
        driver.findElement(AdminDropDownMenu).click();
+       wait.until(ExpectedConditions.visibilityOfElementLocated(AdminSelectOption));
        driver.findElement(AdminSelectOption).click();
        driver.findElement(EmployeeNameField).sendKeys(EmployeeHint);
-       WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
        wait.until(ExpectedConditions.visibilityOfElementLocated(EmployeeElement));
        driver.findElement(EmployeeElement).click();
        driver.findElement(UserNameField).sendKeys(USerName);
        driver.findElement(PasswordField).sendKeys(Password);
        driver.findElement(ConfirmPasswordField).sendKeys(ConfirmPassword);
        driver.findElement(StatusDropDownMenu).click();
+       wait.until(ExpectedConditions.visibilityOfElementLocated(StatusDropDownMenu));
        driver.findElement(StatusSelectOption).click();
+       wait.until(ExpectedConditions.visibilityOfElementLocated(SaveButton));
        driver.findElement(SaveButton).click();
+       wait.until(ExpectedConditions.visibilityOfElementLocated(UserManagementPage.AssertAddAdmin()));
     }
 }
